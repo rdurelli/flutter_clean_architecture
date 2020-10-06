@@ -30,11 +30,12 @@ scripts:
 
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.9.2 <3.0.0"
 
 dependencies:
   equatable: ^1.2.5
   dio: ^3.0.10
+  http:
   flutter_mobx: ^1.1.0+2
   mobx: ^1.2.1+2
   data_connection_checker: ^0.3.4

@@ -20,7 +20,7 @@ class _HomePageState extends ModularState<HomePage, NumberTriviaController> {
   @override
   void initState() {
     super.initState();
-    controller.getConcreteNumber(number: 42);
+    controller.getConcreteNumber(number: 5);
   }
 
   @override
