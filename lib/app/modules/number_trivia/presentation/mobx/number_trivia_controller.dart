@@ -23,9 +23,10 @@ abstract class _NumberTriviaControllerBase with Store {
   bool isLoaded;
 
   @action
-  Future<void> getConcreteNumber({@required int number}) async{
+  Future<void> getConcreteNumber({@required int number}) async {
     this.isLoaded = false;
-    this.numberTrivia = await this.getConcreteNumberTrivia.execute(number: number);
+    this.numberTrivia =
+        await this.getConcreteNumberTrivia.execute(number: number);
     this.isLoaded = true;
   }
 }
