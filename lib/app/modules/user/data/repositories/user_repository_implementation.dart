@@ -21,9 +21,8 @@ class UserRepositoryImplementation implements UserRepository {
   }
 
   @override
-  Future<User> getUserById({String id}) {
-    // TODO: implement getUserById
-    throw UnimplementedError();
+  Future<User> getUserById({String id}) async {
+    return await this.userDataSource.getUserById(id);
   }
 
   @override

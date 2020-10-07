@@ -14,6 +14,7 @@ import 'package:flutterapphelloback/app/modules/user/data/repositories/user_repo
 import 'package:flutterapphelloback/app/modules/user/domain/entities/user.dart';
 import 'package:flutterapphelloback/app/modules/user/domain/repositories/user_repository.dart';
 import 'package:flutterapphelloback/app/modules/user/domain/usecases/get_all_user.dart';
+import 'package:flutterapphelloback/app/modules/user/domain/usecases/get_user_by_id.dart';
 
 void main() async {
   List<Map<String, dynamic>> persons = [
@@ -45,6 +46,11 @@ UserRepository userRepository = UserRepositoryImplementation(userDataSource: use
 GetAllUser getAllUser = GetAllUser(repository: userRepository);
 List<User> allUser = await getAllUser.call(NoParams());
 
+GetUserById getUserById = GetUserById(repository: userRepository);
+User user = await getUserById.call(Params(id: "2"));
+
 print(allUser);
+
+print('O user que retornou é $user');
 
 }

@@ -15,4 +15,7 @@ class User extends Equatable {
 
   @override
   List<Object> get props => [this.id, this.name, this.createdAt];
+
+  @override
+  bool get stringify => true;
 }

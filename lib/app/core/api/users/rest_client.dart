@@ -12,4 +12,13 @@ abstract class RestClient {
   @GET('/users')
   Future<List<UserModel>> getAllUsers();
 
+  @GET('users/{id}')
+  Future<UserModel> getUserById(@Path('id') String id);
+
+  @POST("/users")
+  Future<UserModel> createUser(@Body() UserModel user);
+
+  @DELETE("/users/{id}")
+  Future<void> deleteUser(@Path() String id);
+
 }
