@@ -43,6 +43,9 @@ dependencies:
   flutter_modular: ^2.0.1
   flutter_offline: ^0.3.0
   shared_preferences: ^0.5.12
+  json_serializable: ^3.5.0
+  retrofit: any
+  logger: any
   flutter:
     sdk: flutter
 
@@ -58,6 +61,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mockito: ^4.1.1
+  retrofit_generator: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
