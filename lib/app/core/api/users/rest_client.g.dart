@@ -74,12 +74,12 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<void> deleteUser(id) async {
+  Future<UserModel> deleteUser(id) async {
     ArgumentError.checkNotNull(id, 'id');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    await _dio.request<void>('/users/$id',
+    final _result = await _dio.request<Map<String, dynamic>>('/users/$id',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'DELETE',
@@ -87,6 +87,7 @@ class _RestClient implements RestClient {
             extra: _extra,
             baseUrl: baseUrl),
         data: _data);
-    return null;
+    final value = UserModel.fromJson(_result.data);
+    return value;
   }
 }

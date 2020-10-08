@@ -10,12 +10,6 @@ class UserRepositoryImplementation implements UserRepository {
   UserRepositoryImplementation({@required this.userDataSource});
 
   @override
-  Future<void> deleteUser({String id}) {
-    // TODO: implement deleteUser
-    throw UnimplementedError();
-  }
-
-  @override
   Future<List<User>> getAllUsers() async {
     return await this.userDataSource.getAllUsers();
   }
@@ -24,6 +18,12 @@ class UserRepositoryImplementation implements UserRepository {
   Future<User> getUserById({String id}) async {
     return await this.userDataSource.getUserById(id);
   }
+
+  @override
+  Future<User> deleteUser({String id}) async{
+    return await this.userDataSource.deleteUser(id);
+  }
+
 
   @override
   Future<void> saveUser({User user}) {

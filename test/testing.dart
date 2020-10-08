@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:async/async.dart';
 import 'package:dio/dio.dart';
 import 'package:flutterapphelloback/app/core/api/users/rest_client.dart';
+import 'package:flutterapphelloback/app/core/error/failures.dart';
 import 'package:flutterapphelloback/app/core/usecase/usecase.dart';
 import 'package:flutterapphelloback/app/modules/post/data/datasources/post_data_source.dart';
 import 'package:flutterapphelloback/app/modules/post/data/repositories/post_repository_implementation.dart';
@@ -13,6 +14,7 @@ import 'package:flutterapphelloback/app/modules/user/data/datasources/user_data_
 import 'package:flutterapphelloback/app/modules/user/data/repositories/user_repository_implementation.dart';
 import 'package:flutterapphelloback/app/modules/user/domain/entities/user.dart';
 import 'package:flutterapphelloback/app/modules/user/domain/repositories/user_repository.dart';
+import 'package:flutterapphelloback/app/modules/user/domain/usecases/delete_user.dart';
 import 'package:flutterapphelloback/app/modules/user/domain/usecases/get_all_user.dart';
 import 'package:flutterapphelloback/app/modules/user/domain/usecases/get_user_by_id.dart';
 
@@ -44,13 +46,24 @@ final client = RestClient(Dio());
 UserDataSource userDataSource = UserDataSource(client: client);
 UserRepository userRepository = UserRepositoryImplementation(userDataSource: userDataSource);
 GetAllUser getAllUser = GetAllUser(repository: userRepository);
-List<User> allUser = await getAllUser.call(NoParams());
+//List<User> allUser = await getAllUser.call(NoParams());
 
 GetUserById getUserById = GetUserById(repository: userRepository);
-User user = await getUserById.call(Params(id: "2"));
+//try{
+//  User user = await getUserById.call(Params(id: "1"));
+//  print('O user que retornou é $user');
+//} on Failure {
+//  print('deu um erro na hora de coletar esse cara');
+//}
 
-print(allUser);
+DeleteUser deleteUser = DeleteUser(repository: userRepository);
 
-print('O user que retornou é $user');
+User deletedUser = await deleteUser.call(ParamsDeleteUser(id: "5"));
+
+print('a instancia que deletamos $deletedUser');
+
+//print(allUser);
+
+
 
 }

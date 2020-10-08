@@ -19,6 +19,6 @@ abstract class RestClient {
   Future<UserModel> createUser(@Body() UserModel user);
 
   @DELETE("/users/{id}")
-  Future<void> deleteUser(@Path() String id);
+  Future<UserModel> deleteUser(@Path() String id);
 
 }

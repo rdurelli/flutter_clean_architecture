@@ -49,4 +49,26 @@ class UserDataSource {
 
     return users;
   }
+
+  Future<User> deleteUser(String id) async {
+    UserModel userModel;
+    User user;
+    await this
+        .client
+        .deleteUser(id)
+        .then((value) => userModel = value)
+        .catchError((Object obj) {
+      switch (obj.runtimeType) {
+        case DioError:
+          final res = (obj as DioError).response;
+          throw Failure();
+          break;
+      }
+    });
+
+    if (userModel != null) {
+      user = userModel.toEntity();
+    }
+    return user;
+  }
 }
